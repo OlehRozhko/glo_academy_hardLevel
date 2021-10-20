@@ -1,18 +1,45 @@
-// Створити змінну num зі значенням 266219 (тип даних число)
-var num = 266219;
+var lang = prompt(
+  "In which language do you want to see three first days of week uk or en?",
+  ""
+);
+if (lang == "en") {
+  alert("Monday, Tuesday, Wednesday ...");
+} else if (lang == "uk") {
+  alert("Понеділок, Вівтор, Середа ...");
+} else {
+  alert("Next time please write uk or en!!");
+}
 
-// Вивести в консоль дію (множення) цифр цього числа
-var result = 1;
-num
-  .toString()
-  .split("")
-  .forEach((elem) => (result *= elem));
-console.log("result: ", result);
+var lang1 = prompt(
+  "In which language do you want to see three first days of week uk or en?",
+  ""
+);
+switch (lang1) {
+  case "uk":
+    alert("Понеділок, Вівтор, Середа ...");
+    break;
+  case "en":
+    alert("Monday, Tuesday, Wednesday ...");
+    break;
+}
 
-// Отриманий результат звести в ступінь 3, використовуючи тільки 1 оператор (Math.pow не підходить)
-var newResult = result ** 3;
-console.log("newResult: ", newResult);
+var arra = [];
+arra.en = ["monday", "tuesday", "Wednesday"];
+arra.uk = ["Понеділок", "Вівтор", "Середа"];
+console.log(arra[lang]);
 
-// Вивести на екран перші 2 цифри отриманого числа
-var raising = newResult.toString().substr(0, 2);
-console.log("raising: ", raising);
+var array = {
+  en: ["monday", "tuesday", "Wednesday"],
+  uk: ["Понеділок", "Вівтор", "Середа"],
+};
+console.log(array[lang]);
+
+var namePerson = "Андрій";
+
+console.log(
+  namePerson === "Артем"
+    ? "директор"
+    : namePerson === "Максим"
+    ? "вчитель"
+    : "студент"
+);
