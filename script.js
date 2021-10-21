@@ -1,45 +1,12 @@
-var lang = prompt(
-  "In which language do you want to see three first days of week uk or en?",
-  ""
-);
-if (lang == "en") {
-  alert("Monday, Tuesday, Wednesday ...");
-} else if (lang == "uk") {
-  alert("Понеділок, Вівтор, Середа ...");
-} else {
-  alert("Next time please write uk or en!!");
-}
+"use strict";
 
-var lang1 = prompt(
-  "In which language do you want to see three first days of week uk or en?",
-  ""
-);
-switch (lang1) {
-  case "uk":
-    alert("Понеділок, Вівтор, Середа ...");
-    break;
-  case "en":
-    alert("Monday, Tuesday, Wednesday ...");
-    break;
-}
-
-var arra = [];
-arra.en = ["monday", "tuesday", "Wednesday"];
-arra.uk = ["Понеділок", "Вівтор", "Середа"];
-console.log(arra[lang]);
-
-var array = {
-  en: ["monday", "tuesday", "Wednesday"],
-  uk: ["Понеділок", "Вівтор", "Середа"],
+var func = function (data) {
+  if (typeof data !== typeof "") {
+    return alert("please write string here");
+  } else if (data.length > 30) {
+    return console.log(data.slice(0, 30) + "...");
+  } else {
+    return console.log(data.trim());
+  }
 };
-console.log(array[lang]);
-
-var namePerson = "Андрій";
-
-console.log(
-  namePerson === "Артем"
-    ? "директор"
-    : namePerson === "Максим"
-    ? "вчитель"
-    : "студент"
-);
+func("124453245523593982589uhifhjkadsfdffsfsfsfsf");
