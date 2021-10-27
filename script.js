@@ -1,29 +1,64 @@
 "use strict";
 
-var arr = ["2579", "84564", "4534", "454563", "28769", "7135", "014564"];
-for (var i = 0; i < 7; i++) {
-  if (arr[i].indexOf(2) === 0) {
-    console.log(arr[i]);
-  } else if (arr[i].indexOf(4) === 0) {
-    console.log(arr[i]);
+let week = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
+
+var now = new Date();
+var day = now.getDay();
+var nowDay;
+
+var getDayOfWeek = function (number) {
+  if (number === 0) {
+    return (nowDay = "Sunday");
+  } else if (number === 1) {
+    return (nowDay = "Monday");
+  } else if (number === 2) {
+    return (nowDay = "Tuesday");
+  } else if (number === 3) {
+    return (nowDay = "Wednesday");
+  } else if (number === 4) {
+    return (nowDay = "Thursday");
+  } else if (number === 5) {
+    return (nowDay = "Friday");
+  } else {
+    return (nowDay = "Friday");
   }
-}
+};
+getDayOfWeek(day);
+console.log("nowDay: ", nowDay);
 
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i].startsWith("2") || arr[i].startsWith("4")) {
-    console.log(arr[i]);
+week.forEach((element) => {
+  if (element === "Sunday" || element === "Saturday") {
+    $("body").append("<p><i>" + element + "</i></p>");
+  } else if (nowDay === element) {
+    $("body").append("<p><strong>" + element + "</strong></p>");
+  } else {
+    $("body").append("<p>" + element + "</p>");
   }
-}
+});
 
-let n = 100;
+// var now = new Date();
+// var nowDay = now.getDay();
+// var day;
+// if (nowDay === 0) {
+//   day = 7;
+// } else {
+//   day = nowDay--;
+// }
 
-nextPrime: for (let i = 2; i <= n; i++) {
-  // Для всіх i...
-
-  for (let j = 2; j < i; j++) {
-    // перевірити,чи ділиться число..
-    if (i % j === 0) continue nextPrime; // не підходить, беремо інше
-  }
-  console.log(i); // прості число
-  $("body").append("<p>" + i + "</p>");
-}
+// week.forEach((element, i) => {
+//   if (element === "Sunday" || element === "Saturday") {
+//     $("body").append("<p><i>" + element + "</i></p>");
+//   } else if (day === i) {
+//     $("body").append("<p><strong>" + element + "</strong></p>");
+//   } else {
+//     $("body").append("<p>" + element + "</p>");
+//   }
+// });
