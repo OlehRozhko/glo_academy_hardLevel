@@ -1,64 +1,75 @@
 "use strict";
 
-let week = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
+function reload() {
+  var d = new Date();
+  var currDate = d.getDate();
+  var currMonth = d.getMonth() + 1; //Months are zero based
+  var currYear = d.getFullYear();
+  var currHour = d.getHours();
+  var currMin = d.getMinutes();
+  var currSec = d.getSeconds();
+  var options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "long",
+    timezone: "UTC",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  };
+  var addZero = (number) => {
+    if (number < 10) {
+      return (number = "0" + number);
+    } else {
+      return number;
+    }
+  };
 
-var now = new Date();
-var day = now.getDay();
-var nowDay;
+  var time =
+    addZero(currDate) +
+    "." +
+    addZero(currMonth) +
+    "." +
+    addZero(currYear) +
+    " - " +
+    addZero(currHour) +
+    ":" +
+    addZero(currMin) +
+    ":" +
+    addZero(currSec);
 
-var getDayOfWeek = function (number) {
-  if (number === 0) {
-    return (nowDay = "Sunday");
-  } else if (number === 1) {
-    return (nowDay = "Monday");
-  } else if (number === 2) {
-    return (nowDay = "Tuesday");
-  } else if (number === 3) {
-    return (nowDay = "Wednesday");
-  } else if (number === 4) {
-    return (nowDay = "Thursday");
-  } else if (number === 5) {
-    return (nowDay = "Friday");
-  } else {
-    return (nowDay = "Friday");
-  }
+  var date = d.toLocaleString("uk", options);
+  var firstPart = "Сьогодні " + date.slice(0, 24) + " року,";
+  var lastPart =
+    addZero(currHour) +
+    " година " +
+    addZero(currMin) +
+    " хвилин " +
+    addZero(currSec) +
+    " секунд";
+  var textTime = firstPart.concat(lastPart);
+
+  document.querySelector(".text-time").textContent = textTime;
+  document.querySelector(".time").textContent = time;
+  console.clear();
+  console.log(textTime);
+  console.log(time);
+}
+
+var deleteElem = function () {
+  $("body").remove();
 };
-getDayOfWeek(day);
-console.log("nowDay: ", nowDay);
 
-week.forEach((element) => {
-  if (element === "Sunday" || element === "Saturday") {
-    $("body").append("<p><i>" + element + "</i></p>");
-  } else if (nowDay === element) {
-    $("body").append("<p><strong>" + element + "</strong></p>");
-  } else {
-    $("body").append("<p>" + element + "</p>");
-  }
-});
+let elem = document.createElement("div");
+elem.classList.add("text-time");
+document.body.appendChild(elem);
 
-// var now = new Date();
-// var nowDay = now.getDay();
-// var day;
-// if (nowDay === 0) {
-//   day = 7;
-// } else {
-//   day = nowDay--;
-// }
+elem = document.createElement("div");
+elem.classList.add("time");
+document.body.appendChild(elem);
+console.dir(elem);
 
-// week.forEach((element, i) => {
-//   if (element === "Sunday" || element === "Saturday") {
-//     $("body").append("<p><i>" + element + "</i></p>");
-//   } else if (day === i) {
-//     $("body").append("<p><strong>" + element + "</strong></p>");
-//   } else {
-//     $("body").append("<p>" + element + "</p>");
-//   }
-// });
+document.body.style.color = "red";
+
+setInterval(reload, 1000);
