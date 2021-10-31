@@ -4,7 +4,6 @@ function inputText() {
   var input = document.querySelector("input");
   var list = document.querySelector("ul");
   list.setAttribute("id", "ul");
-  input.setAttribute("id", "textInput");
 
   var liLast = document.createElement("li");
 
@@ -15,7 +14,7 @@ function inputText() {
 }
 
 function clearText() {
-  document.getElementById("textInput").value = "";
+  document.querySelector("input").value = "";
 }
 
 let button = document.querySelector("button");
