@@ -40,7 +40,7 @@ function reload() {
     addZero(currSec);
 
   var date = d.toLocaleString("uk", options);
-  var firstPart = "Сьогодні " + date.slice(0, 24) + " року,";
+  var firstPart = "Сьогодні " + date.slice(0, 23) + " року,";
   var lastPart =
     addZero(currHour) +
     " година " +
