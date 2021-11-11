@@ -1,23 +1,36 @@
 "use strict";
 
-function inputText() {
-  var input = document.querySelector("input");
-  var list = document.querySelector("ul");
-  list.setAttribute("id", "ul");
-  input.setAttribute("id", "textInput");
+let heading = document.getElementById("color"),
+  change = document.getElementById("change");
 
-  var liLast = document.createElement("li");
-
-  if (input.value != !String) {
-    liLast.innerHTML = input.value;
-    return ul.append(liLast);
-  }
-}
-
-function clearText() {
-  document.getElementById("textInput").value = "";
-}
-
-let button = document.querySelector("button");
-button.addEventListener("click", inputText);
-button.addEventListener("click", clearText);
+const array = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+];
+let randomElem = function () {
+  let i = 0;
+  let result = "#";
+  let randomElement;
+  do {
+    randomElement = array[Math.floor(Math.random() * array.length)];
+    result = result + randomElement;
+    i++;
+  } while (i < 6);
+  document.body.style.backgroundColor = result;
+  heading.innerHTML = result;
+};
+change.addEventListener("click", randomElem);
