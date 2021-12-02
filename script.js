@@ -1,18 +1,38 @@
-// Створити змінну num зі значенням 266219 (тип даних число)
-var num = 266219;
+document.addEventListener("DOMContentLoaded", () => {
+  "use strict";
 
-// Вивести в консоль дію (множення) цифр цього числа
-var result = 1;
-num
-  .toString()
-  .split("")
-  .forEach((elem) => (result *= elem));
-console.log("result: ", result);
+  const select = document.getElementById("cars"),
+    output = document.getElementById("output");
 
-// Отриманий результат звести в ступінь 3, використовуючи тільки 1 оператор (Math.pow не підходить)
-var newResult = result ** 3;
-console.log("newResult: ", newResult);
-
-// Вивести на екран перші 2 цифри отриманого числа
-var raising = newResult.toString().substr(0, 2);
-console.log("raising: ", raising);
+  const getData = (urlDb) =>
+    new Promise((resolve, reject) => {
+      const request = new XMLHttpRequest();
+      request.open("GET", urlDb);
+      request.setRequestHeader("Content-type", "application/json");
+      request.send();
+      request.addEventListener("readystatechange", () => {
+        if (request.readyState !== 4) {
+          return;
+        }
+        if (request.readyState === 4 && request.status === 200) {
+          resolve(JSON.parse(request.responseText));
+        } else {
+          reject(request.statusText);
+        }
+      });
+    });
+  const showdata = (data) => {
+    data.cars.forEach((item) => {
+      if (item.brand === select.value) {
+        const { brand, model, price } = item;
+        output.innerHTML = `Тачка ${brand} ${model} <br>
+          Цена: ${price}$`;
+      }
+    });
+  };
+  select.addEventListener("change", () =>
+    getData("./cars.json")
+      .then((data) => showdata(data))
+      .catch((e) => (output.innerHTML = `Відбулася помилка: ${e}`))
+  );
+});
