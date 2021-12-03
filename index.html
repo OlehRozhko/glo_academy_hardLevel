@@ -5,11 +5,32 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hard Level</title>
+
+  <title>Exchange</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-  <script src="/script.js"></script>
+  <!-- <label for="select">Оберіть валюту яку хочете обміняти</label> <br>
+    <select id="select" size="1">
+      <option value="EUR">Євро</option>
+      <option selected value="USD">Долар</option>
+      <option value="AUD">Австралійський долар</option>
+      <option value="PLN">Злотий</option>
+    </select>
+    <br> -->
+  <label for="select-second">Оберіть валюту на яку хочете обміняти "Євро"</label> <br>
+  <select id="select" size="1">
+    <option selected disabled value="EUR">Євро</option>
+    <option value="USD">Долар</option>
+    <option value="AUD">Австралійський долар</option>
+    <option value="PLN">Злотий</option>
+  </select>
+  <br>
+  <input type="text" id="input" placeholder="Введіть суму яку хочете обміняти">
+  <button>Розрахувати суму</button>
+  <p class="result">Результат:</p>
+  <script src="/js.js" defer></script>
 </body>
 
 </html>
